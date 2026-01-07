@@ -1,4 +1,5 @@
 // include/csvio.h
+// Assumptions: comma‑separated, no quoted commas, UTF‑8.
 #ifndef CSVIO_H
 #define CSVIO_H
 #include <stddef.h>

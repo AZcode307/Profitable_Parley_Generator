@@ -14,7 +14,7 @@ static void print_row(const ConsolidatedOutcome *c){
 int main(int argc, char **argv){
     if(argc<2){
         fprintf(stderr, "Usage: %s QUOTES.csv", argv[0]);
-        fprintf(stderr, "Output CSV: market_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev ");
+        fprintf(stderr, "Output CSV: market_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev \n ");
         return 1;
     }
     QuoteVec qv; qvec_init(&qv);
@@ -22,7 +22,7 @@ int main(int argc, char **argv){
     ConOutcomeVec cv; cvec_init(&cv);
     if(consolidate_markets(&qv, &cv)!=0){ fprintf(stderr, "Consolidation failed\n"); qvec_free(&qv); return 3; }
     // Header
-    printf("market_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev");
+    printf("\nmarket_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev\n");
     for(size_t i=0; i<cv.n;i++) print_row(&cv.data[i]);
     cvec_free(&cv); qvec_free(&qv); return 0;
     

@@ -1,0 +1,21 @@
+CC = gcc
+CFLAGS = -02 -std=c17 -Wall _Wextra -Wno-unused-parameter
+INCLUDES = -Iinclude
+SRC = src/odds.c src/no_vig.c src/csvio.c src/line_compare.c src/main.c
+OBJ = $(SRC:.c=.o)
+BIN = bin/parley_cli
+
+all: $(BIN)
+
+$(BIN): $(OBJ)
+    @mkdir -p bin
+    $(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJ)
+
+%.o: %.c
+    $(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+    
+clean:
+    rm -f $(OBJ) $(BIN)
+
+    
+

@@ -20,5 +20,10 @@ int main(int argc, char **argv){
     QuoteVec qv; qvex_init(&qv);
     if(load_quotes_csv(argv[1], &qv) !=0) { fprintf(stderr, "Failed to load %s\n", argv[1]); return 2;}
     ConOutcomeVec cv; cvec_init(&cv);
-    if(consolidate_markets)
+    if(consolidate_markets(&qv, &cv)!=0){ fprintf(stderr, "Consolidation failed\n"); qvec_free(&qv); return 3; }
+    // Header
+    printf("market_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev");
+    for(size_t i=0; i<cv.n;i++) print_row(&cv.data[i]);
+    cvec_free(&cv); qvec_free(&qv); return 0;
+    
 } 

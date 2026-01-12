@@ -18,8 +18,11 @@ int decimal_to_american(double dec){
 }
 
 double implied_prob_from_american(int american){
-    double d = american_to_decimal(american);
-    return 1.0 / d;
+    if (american > 0) {
+        return 100.0 / (american + 100.0);
+    } else {
+        return -american / (-american + 100.0);
+    }
 }
 
 double combine_decimal_odds(const double *legs, int n){

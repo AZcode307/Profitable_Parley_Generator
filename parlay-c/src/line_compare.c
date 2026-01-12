@@ -1,8 +1,10 @@
 // src/line_compare.c
+#define _POSIX_C_SOURCE 200809L
 #include "line_compare.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <strings.h>
 #include "no_vig.h"
 #include "odds.h"
 

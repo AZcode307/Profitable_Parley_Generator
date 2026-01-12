@@ -13,11 +13,11 @@ static void print_row(const ConsolidatedOutcome *c){
 
 int main(int argc, char **argv){
     if(argc<2){
-        fprint(stderr, "Usage: %s QUOTES.csv", argv[0]);
-        fprint(stderr, "Output CSV: market_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev ");
+        fprintf(stderr, "Usage: %s QUOTES.csv", argv[0]);
+        fprintf(stderr, "Output CSV: market_id,outcome,best_book,best_american,best_decimal,est_true_p,breakeven_american, single_ev ");
         return 1;
     }
-    QuoteVec qv; qvex_init(&qv);
+    QuoteVec qv; qvec_init(&qv);
     if(load_quotes_csv(argv[1], &qv) !=0) { fprintf(stderr, "Failed to load %s\n", argv[1]); return 2;}
     ConOutcomeVec cv; cvec_init(&cv);
     if(consolidate_markets(&qv, &cv)!=0){ fprintf(stderr, "Consolidation failed\n"); qvec_free(&qv); return 3; }

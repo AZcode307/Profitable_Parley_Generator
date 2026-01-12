@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -02 -std=c17 -Wall _Wextra -Wno-unused-parameter
+CFLAGS = -O2 -std=c17 -Wall -Wextra -Wno-unused-parameter
 INCLUDES = -Iinclude
-SRC = src/odds.c src/no_vig.c src/csvio.c src/line_compare.c src/main.c
+SRC = src/odds.c src/no_vig.c src/csvio.c src/line_compare.c src/models.c src/main.c
 OBJ = $(SRC:.c=.o)
 BIN = bin/parley_cli
 
